@@ -53,6 +53,7 @@ const config: QuartzConfig = {
       },
     },
   },
+
   plugins: {
     transformers: [
       Plugin.FrontMatter(),
@@ -71,8 +72,13 @@ const config: QuartzConfig = {
       Plugin.TableOfContents(),
       Plugin.CrawlLinks({ markdownLinkResolution: "shortest" }),
       Plugin.Description(),
-      Plugin.Latex({ renderEngine: "katex" }),
-    ],
+      Plugin.Latex({ renderEngine: "katex" ,
+        customMacros: {
+          "\\msin": "{\\color{#8ab4f8}\\sin}",
+          "\\mcos": "{\\color{#ff9999}\\cos}"
+          }
+        })
+      ],
     filters: [Plugin.RemoveDrafts()],
     emitters: [
       Plugin.AliasRedirects(),
