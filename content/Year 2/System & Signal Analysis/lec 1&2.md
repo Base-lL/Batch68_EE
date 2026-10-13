@@ -94,6 +94,7 @@ we try to find where a certain input $t$ that gives the output $x$ goes after mo
 using this function as an example, we want to graph $x(2t-4)$
 
 <center><img src ="Pasted image 20261006221911.png"></center>
+
 $$
 x(t) =
 \begin{cases}
@@ -102,6 +103,7 @@ t, & 0 \le t < 2 \\
 0, & \text{otherwise}
 \end{cases}
 $$
+
 ### get the key points
 we have the values
 $t_1 = -4$
