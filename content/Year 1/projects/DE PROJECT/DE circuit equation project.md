@@ -1,4 +1,10 @@
-#1stSem #mathmatics #projects
+---
+tags:
+  - year1-Sem1
+  - mathmatics
+---
+
+
 <div class="xtable"  style = "--ta : left; --ws: normal; --ai: center" >
 	<div><h1>CIRCUIT DEFINETION</h1> 
 		The circuit represents a simplified model of real electrical systems such as filters and control systems, where multiple paths and energy storage elements affect system behavior.
@@ -93,14 +99,14 @@ $$
 $$
 \large\begin{array}{l}
 Q_1(t) = Q_c + Q_p = e^{-t}(k_1 \sin \sqrt{3} t + k_2 \cos \sqrt{3} t) +\left(-\dfrac{5}{13} \cos(4t) - \frac{15}{26} \sin(4t)\right)\\
-\begin{align}
-I_1(t) &= \dfrac{dQ_1}{dt}\\\\
+\begin{array}{l}
+I_1(t) &= \dfrac{dQ_1}{dt}\\
 &=e^{-t}\left[(-k_1-\sqrt3\,k_2) \sin \sqrt{3}\,t +(-k_2+\sqrt3\,k_1) \cos \sqrt{3}\,t\right] +\left(\dfrac{20}{13} \sin(4t) - \frac{30}{13} \cos(4t)\right)
-\end{align}\\
+\end{array}\\
 \text{at } t = 0 \rightarrow I = 0 \quad , \quad Q = 0\\
 \begin{array}{l}
 Q_1(0) = k_2 -\dfrac{5}{13} = 0 &\quad\rightarrow\quad& k_2 = \dfrac{5}{13}\\
-I_!(0) = -k_2+\sqrt3 - \dfrac{30}{13} = 0 &\quad\rightarrow\quad& k_1 = \dfrac{35\sqrt3}{39}
+I_1(0) = -k_2+\sqrt3 - \dfrac{30}{13} = 0 &\quad\rightarrow\quad& k_1 = \dfrac{35\sqrt3}{39}
 \end{array}\\\\
 Q_1(t) = e^{-t}\left(\dfrac{35\sqrt{3}}{39} \sin \sqrt{3} t + \dfrac{5}{13} \cos \sqrt{3} t\right) - \dfrac{5}{13} \cos(4t) - \frac{15}{26} \sin(4t) \\\\
 I_1(t) = e^{-t}\left[-\dfrac{50\sqrt{3}}{39} \sin \sqrt{3} t + \dfrac{30}{13} \cos \sqrt{3} t\right] + \dfrac{20}{13} \sin(4t) - \frac{30}{13} \cos(4t)
@@ -121,27 +127,27 @@ $$
 $$
 
 #### this is a linear differential equations of the first order of the form $\dfrac{dy}{dx}+f(x)y = g(x)$
-#### by taking the integration factor $\micro(x)$ :
+#### by taking the integration factor $\mu(x)$ :
 
 $$
-\large\begin{align}
-\micro(x) 
+\large\begin{array}{l}
+\mu(x) 
 &= e^{\int f(t)dt}\\
 &= e^{\int2dt}\\
 &= e^{2t}
-\end{align}
+\end{array}
 $$
 
 #### and from the integration factor: 
 
 $$
 \large\begin{array}{l}
-\begin{align}
-I_2 &= \dfrac{1}{\micro} \int \micro g(t)dt\\
+\begin{array}{l}
+I_2 &= \dfrac{1}{\mu} \int \mu g(t)dt\\
 &= \dfrac{1}{e^{2t}} \int 2e^{2t} \cdot5\sin4t \,dt\\
 &= \dfrac{1}{e^{2t}}\left[ e^{2t} \left(\,\sin(4t) - 2 \cos(4t)\,\right) + C\right]\\
 &= \dfrac12 \left(\sin\left(4t\right) - 2 \cos\left(4t\right)\right) + Ce^{-2t}\\
-\end{align}\\\\
+\end{array}\\\\
 \because\text{at } t = 0 \quad,\quad I_2 = 0\\
 \therefore 0 = \dfrac12\left( 0-2 \right) + C \quad,\quad C = 1\\\\
 I_2 = \dfrac12 \sin4t - \cos4t + e^{-2t}
@@ -151,12 +157,12 @@ $$
 ## total current equation:
 
 $$
-\large\begin{align}
+\large\begin{array}{l}
 I(t) & = I_1 + I_2\\
 &= e^{-t}\left[-\dfrac{50\sqrt{3}}{39} \sin \sqrt{3}\,t + \dfrac{30}{13} \cos \sqrt{3}\,t\right]\\
 &+\left(\dfrac{20}{13} \sin(4t) - \frac{30}{13} \cos(4t)\right) + \dfrac12 \sin4t - \cos4t + e^{-2t}\\\\
 &= e^{-t}\left[-\dfrac{50\sqrt{3}}{39} \sin \sqrt{3}\,t + \dfrac{30}{13} \cos \sqrt{3}\,t\right] + \dfrac{53}{26} \sin(4t) - \frac{43}{13} \cos(4t) + e^{-2t}
-\end{align}
+\end{array}
 $$
 
 

@@ -1,8 +1,9 @@
 ---
 tags:
-  - 2ndSem
-  - ElectronicDevices
+  - year1-Sem2
+  - Electronics
 ---
+
 # The Diode I-V characteristics
 
 ![[Pasted image 20260504223812.png]]
@@ -42,7 +43,8 @@ unlike the **exponential model**, there is no *leakage current* in reverse bias.
 diodes can be used to limit the output voltage like in shown figure.
 for current to pass, the nodes' voltage difference has to exceed $V_{D,on}$ 
 after exceeding it, voltage on the diode (*and so the output*) remains a constant value equal  $V_{D,on}$
-*NOTE*: current only passes in the region at which $V_{out}$ is constant and it's *no longer proportional* to the voltage across the nodes
+> [!note] 
+> current only passes in the region at which $V_{out}$ is constant and it's *no longer proportional* to the voltage across the nodes
 
 but what if want to increase the limiting voltage?
 ![[Pasted image 20260515185229.png]]

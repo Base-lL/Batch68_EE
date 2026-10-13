@@ -1,3 +1,9 @@
+---
+tags:
+  - year1-Sem2
+  - ElectricCircuits
+---
+
 this lecture is just these equations:
 $$
 \begin{array}{c}
@@ -136,11 +142,12 @@ $y = y_a + y_b$
 
 is solved by using the **transmission parameters**
 
-*Note*: the transmission parameter can also be called:
-- $a_{11} \rightarrow A$ 
-- $a_{12} \rightarrow B$ 
-- $a_{21} \rightarrow C$
-- $a_{22} \rightarrow D$
+> [!note] 
+> the transmission parameter can also be called:
+>- $a_{11} \rightarrow A$ 
+>- $a_{12} \rightarrow B$ 
+>- $a_{21} \rightarrow C$
+>- $a_{22} \rightarrow D$
 
 the matrix form for its equation:
 

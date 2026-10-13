@@ -1,3 +1,8 @@
+---
+tags:
+  - year1-Sem2
+  - ElectricFields
+---
 
 - poisson's equation: $\nabla^2V=-\dfrac{\rho_v}{\epsilon}$ 
 - Laplace's equation: $\nabla^2V=0$ 

@@ -1,3 +1,10 @@
+---
+tags:
+  - year1-Sem2
+  - Electronics
+---
+
+
 the equation of RMS for a voltage function is:
 $$
 V_{rms} = \sqrt{\frac{1}{T}\int^T_0 \left[v(t)\right]^2 dt}

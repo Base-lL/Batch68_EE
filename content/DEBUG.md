@@ -1,5 +1,4 @@
 متشغلش بالك بالملف ده
-
 **bold**
 *italic*
 <center>centered</center>
@@ -53,13 +52,20 @@ this is between 2 lines
 
 
 
-<div class="xtable" style="--text-align: center;">
+<div class="xtable" style="--dir: center;">
 	<div><b>scalar</b>
 		A quantity that can be described <i>only</i> by its magnitude
 	</div>
 	<div> <strong>vector</strong> 
 		A quantity described by its magnitude <i>and</i> direction
 	</div>
+</div>
+
+<div class="ytable" style="--dir: center">
+
+<p>centered column table format</p>
+<h3>can take different tags</h3>
+
 </div>
 
 
