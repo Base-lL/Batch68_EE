@@ -1,0 +1,28 @@
+\documentclass[border=10pt]{standalone}
+\usepackage{circuitikz}
+
+\begin{document}
+\color{white}
+\begin{circuitikz}[scale=2, transform shape, line width=1pt, american voltages]
+
+\node[op amp] (op) {};
+
+% Non-inverting input to ground
+\draw (op.+) -- ++(0,-0.6) node[ground] {};
+
+% Input branch: ground -> Vin (going up) -> R2 (going right) -> node X -> op.-
+\draw (op.-) to[short, -*] ++(-1.2,0) coordinate(X);
+\draw (X) to[R, l_=$R_2$] ++(-2.5,0) coordinate(Rleft)
+      to[V, l_=$V_{in}$] ++(0,-2) node[ground] {};
+
+% Feedback resistor R1
+\draw (X) -- ++(0,1.6) coordinate(top_left)
+      to[R, l=$R_1$] (top_left -| op.out) -- (op.out);
+
+% Output
+\draw (op.out) to[short, -o] ++(1,0) node[right] {$V_{out}$};
+
+% Node label
+\node[below left] at (X) {$X$};
+\end{circuitikz}
+\end{document}

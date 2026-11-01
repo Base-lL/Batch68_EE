@@ -4,26 +4,137 @@ tags:
   - Networks
 ---
 
-# overview
+# 1. What is the Internet?
 
-1. what is the Internet?
-2. network edge
-	end systems, access networks, physical media (links)
-3. network core
-	packet switching, circuit switching, network structure
-4. delay, loss, throughput in networks
-5. protocol layers, service models
+The internet can be described from two perspectives:
+## Nuts-and-Bolts View
+
+**End systems (hosts):** Devices connected at the *network's edge* running applications
+*example*:
+- PCs
+- servers
+- IoT devices
+- mobile phones
+
+**Packet switches:** Intermediary devices that forward chunks of data *(packets)* through the *network core*
+*example*:
+- routers
+- switches
+
+**Communication links:** Physical media carrying signals at specific transmission rates (*bandwidth* measured in bits/sec)
+*example*:
+- fiber optic
+- copper wire
+- radio spectrum.
+
+**Networks of networks:** Interconnected *I*nternet *S*ervice *P*roviders *(ISPs)* managed by various organizations.
+## Service View
+
+An infrastructure that provides services to distributed applications:
+- Web
+- *v*oice *o*f *i*nternet *p*rotocol *(VoIP)*
+- email
+- gaming
+- streaming
+Provides an *A*pplication *P*rogramming *I*nterface *(API)* allowing software programs to send and receive data across the infrastructure.
+
+## Network Protocols
+A Set of rules defining the format, order of messages sent/received, and actions taken, example:
+- TCP
+- HTTP
+- SMTP
+- IP
+Internet standards are developed by the **IETF** (*I*nternet *E*ngineering *T*ask *F*orce) and documented in **RFCs** (*R*equest *f*or *C*omments).
+
+# 2. Network Edge & Access Networks
+Access networks physically connect end systems to the first router (edge router) on the path to the network core.
+
+| **Access Technology**             | **Media**                                       | **Downstream / Upstream Rates**    | **Shared / Dedicated**      |
+| --------------------------------- | ----------------------------------------------- | ---------------------------------- | --------------------------- |
+| **DSL** (Digital Subscriber Line) | Existing telephone line to Central Office DSLAM | Asymmetric (Downstream > Upstream) | Dedicated line              |
+| **Cable Network** (HFC)           | Hybrid Fiber-Coaxial cable to CMTS              | Asymmetric                         | Shared distribution network |
+| **FTTH** (Fiber To The Home)      | Direct Optical Fiber (OLT to ONT via splitter)  | Gbps range                         | Dedicated/Shared path       |
+| **Enterprise Ethernet**           | Twisted-Pair (Cat 5/6) to switches              | 100 Mbps, 1 Gbps, 10 Gbps          | Dedicated to switch port    |
+| **Wireless LAN** (WiFi 802.11)    | Radio spectrum (~10–100 m)                      | 11 Mbps to 450+ Mbps               | Shared wireless channel     |
+| **Cellular** (4G/5G)              | Radio spectrum to telco base station (~10s km)  | 10s–100s Mbps                      | Shared wireless channel     |
+
+## Physical Media Classification
+
+- **Guided Media:** Signals propagate through solid physical channels (e.g., Copper Twisted-Pair Cat 5/6, Coaxial Cable, Fiber Optic).
+- **Unguided Media:** Signals propagate freely through atmosphere or outer space (e.g., WiFi, Cellular 4G/5G, Bluetooth, Microwave, LEO/Geostationary Satellites).
+
+When choosing physical media for a LAN, consider these 4 factors:
+1.  Distance
+2.  Environment (immunity to interference)
+3.  Cost
+4.  Bandwidth
+ 
+# 3. Network Core: Switching Techniques
+
+The network core is a mesh of interconnected routers and communication links.
+## Internet Hierarchy
+
+1. **Access ISPs:** Connect end systems locally.
+2. **Regional ISPs:** Aggregate local access ISPs.
+3. **Tier-1 Commercial ISPs:** High-capacity global backbones (e.g., Level 3, AT&T, NTT).
+4. **IXPs (Internet Exchange Points):** Peering points where large ISPs directly exchange traffic.
+5. **Content Provider Networks:** Private networks (e.g., Google, Akamai) connecting data centers to bypass Tier-1 backbones.
+# 4. Performance Metrics: Delay, Loss, and Throughput
+
+## The 4 Sources of Packet Delay (Nodal Delay)
+Total Nodal Delay formula: $d_{nodal} = d_{proc} + d_{queue} + d_{trans} + d_{prop}$
+
+1.  **Processing Delay ($d_{proc}$):** Time to check bit errors and determine output link (typically < msec).
+2.  **Queueing Delay ($d_{queue}$):** Time waiting at output link for transmission. Depends heavily on network congestion.
+    *   Traffic Intensity = $La / R$ (where $a$ = avg packet arrival rate).
+    *   If $La / R$ approaches 1, queuing delay becomes large. If $> 1$, packets are lost.
+3.  **Transmission Delay ($d_{trans}$):** Time to push the packet onto the link.
+    *   **Formula:** $d_{trans} = L / R$
+    *   $L$ = packet length (bits)
+    *   $R$ = link bandwidth/transmission rate (bps)
+4.  **Propagation Delay ($d_{prop}$):** Time for a bit to travel through the physical medium.
+    *   **Formula:** $d_{prop} = d / s$
+    *   $d$ = length of physical link (distance)
+    *   $s$ = propagation speed ($\sim 2 \times 10^8 m/sec$)
+
+### Traffic Intensity .
+
+($\frac{L \cdot a}{R}$) Let $a$ be the average packet arrival rate (packets/sec)
+
+- $\frac{L \cdot a}{R} \approx 0 \rightarrow$ Small queueing delay.
+- $\frac{L \cdot a}{R} \rightarrow 1 \rightarrow$ Queueing delay grows exponentially.
+- $\frac{L \cdot a}{R} > 1 \rightarrow$ Arrival rate exceeds link capacity; queue grows infinitely and packets drop (Packet Loss).
 
 
+## Throughput
+*   Rate ($bits/sec$) at which bits are transferred between sender and receiver.
+*   **Bottleneck link:** The link on the end-to-end path that constrains the overall throughput (usually the link with the lowest bandwidth).
+$$
+\text{Throughput} = \min\left(R_s,\, R_c,\, \frac{R}{N}\right)
+$$
 
+# 5. Protocol Layering & Encapsulation
 
+## Protocol Layers & Encapsulation
+### OSI Reference Model
+- **7. Application Layer:** Supports network applications (e.g., HTTP, SMTP, DNS). Data unit: Message.
+- **6. Presentation Layer:** Allows applications to interpret the meaning of data (e.g., encryption, compression, machine-specific conventions).
+- **5. Session Layer:** Manages synchronization, checkpointing, and recovery of data exchange.
+- **4. Transport Layer:** Process-to-process data transfer (e.g., TCP, UDP). Data unit: Segment.
+- **3. Network Layer:** Routing of datagrams from source to destination (e.g., IP, routing protocols). Data unit: Datagram.
+- **2. Link Layer:** Data transfer between neighboring network elements (e.g., Ethernet, WiFi). Data unit: Frame.
+- **1. Physical Layer:** Transmits raw bits "on the wire".
 
+### The Internet Protocol Stack (TCP/IP)
+it has the same layers of the OSI except the **presentation** and **session** layer.
+if the developer needs them they have to develop them in the **application** layer.
 
+# 6. Key Network Architecture Pillars
 
-
-
-
-
-
-
-
+- **Fault Tolerance:** System continues functioning despite component failures, achieved primarily via redundancy.
+- **Scalability:** Network expands to accommodate growth without degrading existing user performance.
+- **Quality of Service (QoS):** Mechanisms that prioritize traffic types (e.g., video streaming over bulk downloads) to guarantee minimum performance requirements.
+- **Security**
+ 
+ 
+ 

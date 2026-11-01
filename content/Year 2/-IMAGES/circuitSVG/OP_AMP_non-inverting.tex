@@ -1,0 +1,27 @@
+\documentclass[border=10pt]{standalone}
+\usepackage{circuitikz}
+
+\begin{document}
+\color{white}
+\begin{circuitikz}[scale=2, transform shape, line width=1pt, american voltages]
+
+% Op-amp with non-inverting (+) input on top
+    \node[op amp, noinv input up] (op) {};
+
+    % V_in source connected to the (+) input
+    \draw (op.+) -- ++(-1.5,0) node[pos=0.4, above] {}
+          to[V, l_=$V_{in}$] ++(0,-1.5) node[ground] {};
+
+    % Output branch with a filled junction dot and open terminal
+    \draw (op.out) to[short, *-o] ++(1,0) node[right] {$V_{out}$};
+
+    % R1 and R2 voltage divider branching down from the output
+    \draw (op.out) to[resistor, l=$R_1$] ++(0,-1.5) coordinate(mid_node)
+          to[resistor, l=$R_2$] ++(0,-1.5) node[ground] {};
+
+    % Feedback connection from inverting (-) input to the R1/R2 junction
+    \draw (op.-) -- ++(-0.5,0) node[pos=0.4, below] {}
+          |- (mid_node) node[circ] {};
+
+\end{circuitikz}
+\end{document}

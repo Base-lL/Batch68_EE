@@ -1,0 +1,30 @@
+\documentclass[border=10pt]{standalone}
+\usepackage{circuitikz}
+
+\begin{document}
+\color{white}
+\begin{circuitikz}[scale=2, transform shape, line width=1pt, american voltages]
+
+% Op-amp node (with non-inverting (+) input on top)
+\node[op amp, noinv input up] (op) at (2.5,0) {};
+
+% Input voltage source V_in connected to non-inverting (+) input
+\draw (0,-1.2) node[ground] {}
+      to[vsource, l=$V_{in}$] (0, 0.5)
+      -- (op.+);
+
+% Output junction node
+\draw (op.out) -- ++(0.5,0) node[circ] (out_node) {};
+
+% Feedback loop connecting inverting (-) input to output junction
+\draw (op.-) -- ++(-0,-0.5) -- ++(0,-0.5) -| (out_node);
+
+% Output terminal with V_out voltage reference and ground
+\draw (out_node) to[short, -o] ++(0.6,0) coordinate (out_term);
+\node[below=0pt] at (out_term) {$+$};
+\node[below=12pt] at (out_term) {$V_{out}$};
+\node[below=24pt] at (out_term) {$-$};
+\draw (out_term) ++(0,-1.2) node[ground] {};
+
+\end{circuitikz}
+\end{document}

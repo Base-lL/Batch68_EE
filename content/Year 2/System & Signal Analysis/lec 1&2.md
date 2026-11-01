@@ -79,7 +79,7 @@ $x(t) \Rightarrow x(-t)$
 we can combine the previous operations together as $x(at-b)$
 for a value that lies on $t$ and has amplitude $x$:
 
-x before and after the operations *stays the same*
+$x$ before and after the operations *stays the same*
 
 to get the new value $t_s$ that has the same amplitude $x$ :
 $$

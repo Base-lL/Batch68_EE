@@ -77,7 +77,8 @@ const config: QuartzConfig = {
           "\\msin": "{\\color{#8ab4f8}\\sin}",
           "\\mcos": "{\\color{#ff9999}\\cos}"
           }
-        })
+        }),
+      Plugin.ImageCaptions(),
       ],
     filters: [Plugin.RemoveDrafts()],
     emitters: [

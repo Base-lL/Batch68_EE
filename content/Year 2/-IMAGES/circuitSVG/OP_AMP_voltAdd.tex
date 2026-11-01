@@ -1,0 +1,39 @@
+\documentclass[border=10pt]{standalone}
+\usepackage{circuitikz}
+
+\begin{document}
+\color{white}
+\begin{circuitikz}[scale=2, transform shape, line width=1pt, american voltages]
+
+% Op-amp node
+    \node[op amp] (op) at (4.5,0) {};
+
+    % Non-inverting (+) input connected to ground
+    \draw (op.+) node[ground] {};
+
+    % Junction coordinate where the two input branches meet
+    \coordinate (in_junction) at (2.4, 0.5);
+
+    % Top input branch: V1 -> R1 -> junction
+    \draw (0, 0.9) node[left] {$V_1$} to[short, o-] ++(0.3,0)
+          to[R, l=$R_1$] ++(1.7,0) |- (in_junction);
+
+    % Bottom input branch: V2 -> R2 -> junction
+    \draw (0, 0.1) node[left] {$V_2$} to[short, o-] ++(0.3,0)
+          to[R, l=$R_2$] ++(1.7,0) |- (in_junction);
+
+    % Connection from junction to Node X and inverting (-) input
+    \draw (in_junction) -- (3.2, 0.5) node[circ] (X) {} node[above left] {$X$}
+          -- (op.-);
+
+    % Output wire with junction dot for feedback connection
+    \draw (op.out) -- ++(0.5,0) node[circ] (out_node) {}
+          to[short, -o] ++(0.6,0) node[right] {$V_{out}$};
+
+    % Feedback path with resistor RF aligned using orthogonal coordinates
+    \draw (X) -- (X |- 0, 1.5)
+          to[R, l=$R_F$] (out_node |- 0, 1.5)
+          -- (out_node);
+
+\end{circuitikz}
+\end{document}
